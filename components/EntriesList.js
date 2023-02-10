@@ -6,19 +6,22 @@ import EditEntries from "../screens/EditEntries"
 export default function EntriesList({ entries }) {
     const navigation = useNavigation()
 
+
     return (
         <View style={styles.container}>
         <FlatList
             data={entries}
             renderItem={({ item }) => (
-            //console.log("item", item),
-            //console.log("item", item.amount),
+            console.log("item", item),
+            console.log("item", item.isWarning),
+
             <Pressable
                 style={styles.item}
                 onPress={() => navigation.navigate("EditEntries", { entry: item })}
             >
-                <Text style={styles.name}>{item.name}</Text>
+                <Text style={styles.description}>{item.description}</Text>
                 <Text style={styles.calories}>{item.calories}</Text>
+                <Text >{item.isWarning}</Text>
             </Pressable>
             )}
             keyExtractor={(item) => item.id}
@@ -40,7 +43,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
     },
-    name: {
+    description: {
         fontSize: 32,
     },
     calories: {
