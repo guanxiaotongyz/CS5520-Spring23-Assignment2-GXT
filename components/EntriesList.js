@@ -12,8 +12,8 @@ export default function EntriesList({ entries }) {
         <FlatList
             data={entries}
             renderItem={({ item }) => (
-            console.log("item", item),
-            console.log("item", item.isWarning),
+            // console.log("item", item),
+            // console.log("item", item.isWarning),
 
             <Pressable
                 style={styles.item}
@@ -21,7 +21,7 @@ export default function EntriesList({ entries }) {
             >
                 <Text style={styles.description}>{item.description}</Text>
                 <Text style={styles.calories}>{item.calories}</Text>
-                <Text >{item.isWarning}</Text>
+                <Text >{item.isWarning.toString()}</Text>
             </Pressable>
             )}
             keyExtractor={(item) => item.id}

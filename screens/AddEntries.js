@@ -10,23 +10,8 @@ const AddEntries = () => {
   const [isWarning, setIsWarning] = React.useState(false);
   const navigation = useNavigation();
 
-  async function isWarningFunction() {
-    const caloriesInt = parseInt(calories);
-    if (caloriesInt >= 500) {
-      setIsWarning(true);
-    } else {
-      setIsWarning(false);
-    }
-  }
+
   const submitFunction = () => {
-    // build aysnc isWarning function to check if calories is greater than 500
-    // if calories is greater than 500, set isWarning to true
-    // if calories is less than 500, set isWarning to false
-    // add isWarning to the data object
-    // add data object to firestore
-    // navigate back to the home screen
-  
-    isWarningFunction();
     const data = {
       calories: calories,
       description: description,
@@ -34,23 +19,6 @@ const AddEntries = () => {
     };
     addEntriesFunction(data);
     navigation.pop();
-
-    // const caloriesInt = parseInt(calories);
-    // if (caloriesInt >= 500) {
-    //   setIsWarning(true);
-    // } else {
-    //   setIsWarning(false);
-    // }
-
-    // console.log(caloriesInt , "isWarning====== ==========", isWarning);
-
-    // const data = {
-    //   calories: calories,
-    //   description: description,
-    //   isWarning: isWarning,
-    // };
-    // addEntriesFunction(data);
-    // navigation.pop();
   };
 
   return (
