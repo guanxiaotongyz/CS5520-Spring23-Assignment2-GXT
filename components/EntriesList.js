@@ -17,7 +17,10 @@ export default function EntriesList({ entries }) {
 
             <Pressable
                 style={styles.item}
-                onPress={() => navigation.navigate("EditEntries", { entry: item })}
+                onPress={() => navigation.navigate("EditEntries", { calories   : item.calories, 
+                                                                    description: item.description,
+                                                                    isWarning  : item.isWarning,
+                                                                    id         : item.id })}
             >
                 <Text style={styles.description}>{item.description}</Text>
                 <Text style={styles.calories}>{item.calories}</Text>

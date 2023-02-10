@@ -1,7 +1,7 @@
 import { View, Text, TextInput, StyleSheet, Pressable } from "react-native";
 import React from "react";
 import { firestore } from "../firebase/firebase-setup";
-import { addEntriesFunction } from "../firebase/firestore";
+import { addEntriesFunction , deleteEntriesFunction } from "../firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
 
 const AddEntries = () => {
