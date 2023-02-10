@@ -4,26 +4,29 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./screens/Home";
+import EditEntries from "./screens/EditEntries";
+import AddExpense from "./screens/AddEntries";
+
 
 
 const Stack = createNativeStackNavigator();
 
 
-function AddExpense() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>AddExpense</Text>
-    </View>
-  );
-}
+// function AddExpense() {
+//   return (
+//     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+//       <Text>AddExpense</Text>
+//     </View>
+//   );
+// }
 
-function Settings() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
+// function Settings() {
+//   return (
+//     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+//       <Text>Settings!</Text>
+//     </View>
+//   );
+// }
 
 
 function App() {
@@ -36,7 +39,7 @@ function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen name="Add" component={AddExpense} />
-        <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="EditEntries" component={EditEntries} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,6 +1,7 @@
 import { View, Text, FlatList, StyleSheet, Pressable } from "react-native"
 import React from "react"
 import { useNavigation } from "@react-navigation/native"
+import EditEntries from "../screens/EditEntries"
 
 export default function EntriesList({ entries }) {
     const navigation = useNavigation()
@@ -14,7 +15,7 @@ export default function EntriesList({ entries }) {
             //console.log("item", item.amount),
             <Pressable
                 style={styles.item}
-                onPress={() => navigation.navigate("Add", { entry: item })}
+                onPress={() => navigation.navigate("EditEntries", { entry: item })}
             >
                 <Text style={styles.name}>{item.name}</Text>
                 <Text style={styles.calories}>{item.calories}</Text>

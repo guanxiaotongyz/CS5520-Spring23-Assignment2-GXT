@@ -5,15 +5,15 @@ import { firestore } from "../firebase/firebase-setup"
 import EntriesList from '../components/EntriesList'
 
 // Get all entries from firebase
-function getAllEntries() {
-    getDocs(collection(firestore, "entries")).then((docSnap) => {
-        let entries = []
-        docSnap.forEach((doc) => {
-            entries.push({...doc.data() , id: doc.id})
-        })
-        console.log("document" ,entries)
-        })
-}
+// function getAllEntries() {
+//     getDocs(collection(firestore, "entries")).then((docSnap) => {
+//         let entries = []
+//         docSnap.forEach((doc) => {
+//             entries.push({...doc.data() , id: doc.id})
+//         })
+//         console.log("document" ,entries)
+//         })
+// }
 
 
 const AllEntries = () => {
@@ -44,7 +44,7 @@ const AllEntries = () => {
           <Text>Firebase crud</Text>
           <EntriesList entries={entries} />
           {/*show all entries*/}
-          <Button title="Show all entries" onPress={getAllEntries}></Button>
+          {/* <Button title="Show all entries" onPress={getAllEntries}></Button> */}
         </View>
       );
 }
