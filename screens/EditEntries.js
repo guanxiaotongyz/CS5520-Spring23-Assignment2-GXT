@@ -1,14 +1,37 @@
 import { View, Text, FlatList, StyleSheet, Pressable } from "react-native"
 import React from "react"
 import { useNavigation } from "@react-navigation/native"
-import { addEntriesFunction , deleteEntriesFunction } from "../firebase/firestore";
+import {deleteEntriesFunction, updateEntriesFunction } from "../firebase/firestore";
 
 const EditEntries = (props) => {
-  const navigation = useNavigation()
 
+  const navigation = useNavigation()
+  
   return (
     <View>
       <Text>EditEntries Test</Text>
+
+      {/* Update pressable if params.calories more than 500 */}
+      {props.route.params.calories > 500 ? (
+        <Pressable
+          style={styles.button}
+          onPress={() => {
+            updateEntriesFunction(props.route.params.id , {
+              calories: props.route.params.calories,
+              description: props.route.params.description,
+              isWarning: false,
+            });
+            navigation.pop();
+          }}
+        >
+          <Text>Update</Text>
+        </Pressable>
+      ) : (
+        null
+      )}
+     
+
+
       {/* Delete pressable */}
       <Pressable
         style={styles.button}

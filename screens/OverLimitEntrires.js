@@ -16,13 +16,13 @@ const OverLimitEntrires = ({navigation}) => {
                 return;
             }
             else {
-                const moreThan500 = [];
+                const isLimitWarning = [];
                 docSnap.docs.forEach((docdata) => {
-                  if(docdata.data().calories >= 500){
-                    moreThan500.push({...docdata.data() , id: docdata.id})
+                  if(docdata.data().isWarning === true){
+                    isLimitWarning.push({...docdata.data() , id: docdata.id})
                   }
                 })
-                setOverLimitEntrires(moreThan500)
+                setOverLimitEntrires(isLimitWarning)
             }
         })
         return unsubscribe
