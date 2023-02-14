@@ -6,7 +6,23 @@ import PressableButton from "../components/PressableButton";
 
 const EditEntries = (props) => {
 
-  const navigation = useNavigation()
+  const navigation = useNavigation();
+
+  const pressUpdateHandler = () => {
+    updateEntriesFunction(props.route.params.id , {
+      calories: props.route.params.calories,
+      description: props.route.params.description,
+      isWarning: false,
+    });
+    navigation.pop();
+  }
+
+  const pressDeleteHandler = () => {
+    deleteEntriesFunction(props.route.params.id);
+    navigation.pop();
+  }
+
+
 
   return (
     <View>
@@ -14,35 +30,28 @@ const EditEntries = (props) => {
 
       {/* Update pressable if params.calories more than 500 */}
       {props.route.params.calories > 500 & props.route.params.isWarning == true  ? (
-        <Pressable
+        <PressableButton
           style={styles.button}
-          onPress={() => {
-            updateEntriesFunction(props.route.params.id , {
-              calories: props.route.params.calories,
-              description: props.route.params.description,
-              isWarning: false,
-            });
-            navigation.pop();
-          }}
+          pressHandler={pressUpdateHandler}
         >
           <Text>Update</Text>
-        </Pressable>
+        </PressableButton>
       ) : (
         null
       )}
+
+      
      
 
 
       {/* Delete pressable */}
-      <Pressable
+     
+      <PressableButton
         style={styles.button}
-        onPress={() => {
-          deleteEntriesFunction(props.route.params.id);
-          navigation.pop();
-        }}
+        pressHandler={pressDeleteHandler}
       >
         <Text>Delete</Text>
-      </Pressable>
+      </PressableButton>
 
 
     </View>
