@@ -2,6 +2,7 @@ import { View, Text, FlatList, StyleSheet, Pressable } from "react-native"
 import React from "react"
 import { useNavigation } from "@react-navigation/native"
 import {deleteEntriesFunction, updateEntriesFunction } from "../firebase/firestore";
+import PressableButton from "../components/PressableButton";
 
 const EditEntries = (props) => {
 

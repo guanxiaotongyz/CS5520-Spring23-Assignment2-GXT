@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Entypo } from "@expo/vector-icons";
 import EditEntries from "../screens/EditEntries";
+import PressableButton from "./PressableButton";
 
 export default function EntriesList({ entries }) {
   const navigation = useNavigation();
@@ -15,24 +16,44 @@ export default function EntriesList({ entries }) {
           // console.log("item", item),
           // console.log("item", item.isWarning),
 
-          <Pressable
+        //   <Pressable
+        //     style={styles.item}
+        //     onPress={() =>
+        //       navigation.navigate("EditEntries", {
+        //         calories: item.calories,
+        //         description: item.description,
+        //         isWarning: item.isWarning,
+        //         id: item.id,
+        //       })
+        //     }
+        //   >
+        //     {item.isWarning == true ? (
+        //       <Entypo name="warning" size={24} color="black" />
+        //     ) : null}
+        //     <Text style={styles.description}>{item.description}</Text>
+        //     <Text style={styles.calories}>{item.calories}</Text>
+        //     {/* <Text>{item.isWarning.toString()}</Text> */}
+        //   </Pressable>
+
+        <PressableButton
             style={styles.item}
-            onPress={() =>
-              navigation.navigate("EditEntries", {
-                calories: item.calories,
-                description: item.description,
-                isWarning: item.isWarning,
-                id: item.id,
-              })
-            }
+            pressHandler={() =>
+                      navigation.navigate("EditEntries", {
+                        calories: item.calories,
+                        description: item.description,
+                        isWarning: item.isWarning,
+                        id: item.id,
+                      })
+                    }
           >
             {item.isWarning == true ? (
               <Entypo name="warning" size={24} color="black" />
             ) : null}
             <Text style={styles.description}>{item.description}</Text>
             <Text style={styles.calories}>{item.calories}</Text>
-            {/* <Text>{item.isWarning.toString()}</Text> */}
-          </Pressable>
+          </PressableButton>
+
+
         )}
         keyExtractor={(item) => item.id}
       />
