@@ -6,13 +6,13 @@ import {deleteEntriesFunction, updateEntriesFunction } from "../firebase/firesto
 const EditEntries = (props) => {
 
   const navigation = useNavigation()
-  
+
   return (
     <View>
       <Text>EditEntries Test</Text>
 
       {/* Update pressable if params.calories more than 500 */}
-      {props.route.params.calories > 500 ? (
+      {props.route.params.calories > 500 & props.route.params.isWarning == true  ? (
         <Pressable
           style={styles.button}
           onPress={() => {
