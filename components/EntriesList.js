@@ -15,26 +15,7 @@ export default function EntriesList({ entries }) {
         renderItem={({ item }) => (
           // console.log("item", item),
           // console.log("item", item.isWarning),
-
-        //   <Pressable
-        //     style={styles.item}
-        //     onPress={() =>
-        //       navigation.navigate("EditEntries", {
-        //         calories: item.calories,
-        //         description: item.description,
-        //         isWarning: item.isWarning,
-        //         id: item.id,
-        //       })
-        //     }
-        //   >
-        //     {item.isWarning == true ? (
-        //       <Entypo name="warning" size={24} color="black" />
-        //     ) : null}
-        //     <Text style={styles.description}>{item.description}</Text>
-        //     <Text style={styles.calories}>{item.calories}</Text>
-        //     {/* <Text>{item.isWarning.toString()}</Text> */}
-        //   </Pressable>
-
+          
         <PressableButton
             style={styles.item}
             pressHandler={() =>

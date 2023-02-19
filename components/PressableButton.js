@@ -21,5 +21,5 @@ export default function PressableButton({ style, pressHandler, children }) {
 
 const styles = StyleSheet.create({
   buttonStyle: { justifyContent: "center", backgroundColor: "green" },
-  pressedStyle: { backgroundColor: "grey", opacity: 0.5 },
+  pressedStyle: { backgroundColor: "lightgreen", opacity: 0.5 },
 });

@@ -5,10 +5,22 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AllEntries from "./AllEntries";
 import OverLimitEntrires from "./OverLimitEntrires";
+import PressableButton from "../components/PressableButton";
 
 const Tab = createBottomTabNavigator();
 
 const Home = ({ navigation }) => {
+
+  let addPrssableSign = (
+    <PressableButton
+      pressHandler={() => {
+        navigation.navigate("Add");
+      }}
+    >
+      <Text  style={Styles.button}> + </Text>
+    </PressableButton>
+  );
+
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -17,12 +29,13 @@ const Home = ({ navigation }) => {
         options={() => {
           return {
             headerRight: () => (
-              <Button
-                onPress={() => {
-                  navigation.navigate("Add");
-                }}
-                title="+"
-              ></Button>
+              // <Button
+              //   onPress={() => {
+              //     navigation.navigate("Add");
+              //   }}
+              //   title="+"
+              // ></Button>
+              addPrssableSign
             ),
           };
         }}
@@ -33,12 +46,13 @@ const Home = ({ navigation }) => {
         options={() => {
           return {
             headerRight: () => (
-              <Button
-                onPress={() => {
-                  navigation.navigate("Add");
-                }}
-                title="+"
-              ></Button>
+              // <Button
+              //   onPress={() => {
+              //     navigation.navigate("Add");
+              //   }}
+              //   title="+"
+              // ></Button>
+              addPrssableSign
             ),
           };
         }}
@@ -49,9 +63,9 @@ const Home = ({ navigation }) => {
 
 const Styles = StyleSheet.create({
   plusSign: {
-    color: "white",
+    color: "black",
     marginRight: 20,
-    fontSize: 28,
+    fontSize: 100,
     fontWeight: "300",
   },
 });

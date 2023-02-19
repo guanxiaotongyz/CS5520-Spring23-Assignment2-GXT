@@ -1,8 +1,10 @@
-import { View, Text, TextInput, StyleSheet, Pressable } from "react-native";
+import { View, Text, TextInput, StyleSheet, Pressable,Alert } from "react-native";
 import React from "react";
 import { firestore } from "../firebase/firebase-setup";
 import { addEntriesFunction , deleteEntriesFunction } from "../firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
+import PressableButton from "../components/PressableButton";
+
 
 const AddEntries = () => {
   const [calories, setCalories] = React.useState();
@@ -10,8 +12,39 @@ const AddEntries = () => {
   const [isWarning, setIsWarning] = React.useState(false);
   const navigation = useNavigation();
 
+  // invaild input check
+  const checkInput = () => {
+    // if calories is null or empty or less than 0
+    if (calories == null || calories == "" || parseInt(calories) < 0) {
+      invaildAlert();
+      return false;
+    }
+    // if description is null or empty
+    if (description == null || description == "") {
+      invaildAlert();
+      return false;
+    }
+    return true;
+  };
+
+  // create invaild alert function
+  const invaildAlert = () => {
+    Alert.alert("Invaild input",
+    "Please enter correct calories and description",
+    [
+      {
+        text: "OK",
+        onPress: () => console.log("OK Pressed"),
+      }
+    ]
+    )
+  };
+
 
   const submitFunction = () => {
+    if (checkInput() == false) {
+      return;
+    }
     const data = {
       calories: calories,
       description: description,
@@ -41,21 +74,25 @@ const AddEntries = () => {
         }}
       ></TextInput>
 
-      {/* Reset Rressable */}
-      <Pressable
+      {/* Reset Rressable with PressableButtom */}
+      <PressableButton
         style={styles.button}
-        onPress={() => {
+        pressHandler={() => {
           setCalories("");
           setDescription("");
         }}
       >
         <Text>Reset</Text>
-      </Pressable>
+      </PressableButton>
 
-      {/* Submit Pressable */}
-      <Pressable style={styles.button} onPress={submitFunction}>
+
+      {/* Submit Pressable with  PressableButtom*/}
+      <PressableButton
+        style={styles.button}
+        pressHandler={submitFunction}
+      >
         <Text>Submit</Text>
-      </Pressable>
+      </PressableButton>
     </View>
   );
 };
