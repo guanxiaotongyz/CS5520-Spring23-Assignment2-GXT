@@ -8,7 +8,6 @@ import {
 import React from "react";
 import {
   addEntriesFunction,
-  deleteEntriesFunction,
 } from "../firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
 import PressableButton from "../components/PressableButton";

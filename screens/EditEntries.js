@@ -1,4 +1,4 @@
-import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
+import { View, Text, StyleSheet, Alert } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import {
@@ -8,7 +8,6 @@ import {
 import PressableButton from "../components/PressableButton";
 import CardEditPage from "../components/CardEditPage";
 import colors from "../styles /colors";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -28,6 +27,39 @@ const EditEntries = (props) => {
     deleteEntriesFunction(props.route.params.id);
     navigation.pop();
   };
+
+  const createTwoButtonAlertUpdate = () =>
+    Alert.alert(
+      "Important",
+      "Are you sure you want to make this item reviewed ?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        { text: "OK", onPress: () => pressUpdateHandler() },
+      ],
+      { cancelable: false }
+    );
+
+  const createTwoButtonAlertDelete = () =>
+    Alert.alert(
+      "Delete",
+      "Are you sure you want to delete this item ?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+
+        { text: "OK", onPress: () => pressDeleteHandler() },
+      ],
+      { cancelable: false }
+    );
+
+
 
   return (
   
@@ -56,7 +88,7 @@ const EditEntries = (props) => {
           <PressableButton
             style={styles.button}
 
-            pressHandler={pressUpdateHandler}
+            pressHandler={createTwoButtonAlertUpdate}
           >
             <AntDesign name="check" size={24} color={colors.white} />
           </PressableButton>
@@ -66,7 +98,7 @@ const EditEntries = (props) => {
 
         <PressableButton
           style={styles.button}
-          pressHandler={pressDeleteHandler}
+          pressHandler={createTwoButtonAlertDelete}
         >
           <MaterialCommunityIcons
             name="delete-outline"
