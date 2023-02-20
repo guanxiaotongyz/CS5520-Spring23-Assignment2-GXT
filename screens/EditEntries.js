@@ -1,62 +1,86 @@
-import { View, Text, FlatList, StyleSheet, Pressable } from "react-native"
-import React from "react"
-import { useNavigation } from "@react-navigation/native"
-import {deleteEntriesFunction, updateEntriesFunction } from "../firebase/firestore";
+import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
+import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import {
+  deleteEntriesFunction,
+  updateEntriesFunction,
+} from "../firebase/firestore";
 import PressableButton from "../components/PressableButton";
+import CardEditPage from "../components/CardEditPage";
+import colors from "../styles /colors";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { AntDesign } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const EditEntries = (props) => {
-
   const navigation = useNavigation();
 
   const pressUpdateHandler = () => {
-    updateEntriesFunction(props.route.params.id , {
+    updateEntriesFunction(props.route.params.id, {
       calories: props.route.params.calories,
       description: props.route.params.description,
       isWarning: false,
     });
     navigation.pop();
-  }
+  };
 
   const pressDeleteHandler = () => {
     deleteEntriesFunction(props.route.params.id);
     navigation.pop();
-  }
-
-
+  };
 
   return (
-    <View>
-      <Text>EditEntries Test</Text>
+    // <View>
+    //   <Text>EditEntries Test</Text>
+
+    <CardEditPage>
+      {/* show the information */}
+      <View style={styles.info}>
+        <Text style={styles.text}>Calories: {props.route.params.calories}</Text>
+        <Text style={styles.text}>
+          Description: {props.route.params.description}
+        </Text>
+      </View>
 
       {/* Update pressable if params.calories more than 500 */}
-      {props.route.params.calories > 500 & props.route.params.isWarning == true  ? (
+
+      <View
+        style={
+          (props.route.params.calories > 500) &
+          (props.route.params.isWarning == true)
+            ? styles.twoButtom
+            : styles.oneButtom
+        }
+      >
+        {(props.route.params.calories > 500) &
+        (props.route.params.isWarning == true) ? (
+          <PressableButton
+            style={styles.button}
+
+            pressHandler={pressUpdateHandler}
+          >
+            <AntDesign name="check" size={24} color={colors.white} />
+          </PressableButton>
+        ) : null}
+
+        {/* Delete pressable */}
+
         <PressableButton
           style={styles.button}
-          pressHandler={pressUpdateHandler}
+          pressHandler={pressDeleteHandler}
         >
-          <Text>Update</Text>
+          <MaterialCommunityIcons
+            name="delete-outline"
+            size={24}
+            color={colors.white}
+          />
         </PressableButton>
-      ) : (
-        null
-      )}
+      </View>
+    </CardEditPage>
 
-      
-     
-
-
-      {/* Delete pressable */}
-     
-      <PressableButton
-        style={styles.button}
-        pressHandler={pressDeleteHandler}
-      >
-        <Text>Delete</Text>
-      </PressableButton>
-
-
-    </View>
-  )
-}
+    // </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -64,13 +88,32 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   button: {
-    backgroundColor: "#f9c2ff",
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    backgroundColor: colors.darkblue,
+    padding: 10,
+    marginVertical: 5,
+    marginHorizontal: 20,
     flexDirection: "row",
     justifyContent: "space-between",
   },
-})
+  info: {
+    padding: 10,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  text: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: colors.darkblue,
+  },
+  twoButtom: {
+    marginHorizontal: 30,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  oneButtom: {
+    flexDirection: "row",
+    alignSelf: "center",
+  },
+});
 
-export default EditEntries
+export default EditEntries;
