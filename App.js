@@ -8,8 +8,6 @@ import EditEntries from "./screens/EditEntries";
 import AddExpense from "./screens/AddEntries";
 import colors from "./styles /colors";
 
-
-
 const Stack = createNativeStackNavigator();
 
 function App() {
@@ -21,17 +19,32 @@ function App() {
           component={Home}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Add" component={AddExpense} 
-                        options={{
-                          headerStyle: {
-                            backgroundColor: colors.rebecapurple,
-                          },
-                          headerTintColor: colors.white,
-                          headerTitleStyle: {
-                            fontSize: 18,
-                          },
-                        }} />
-        <Stack.Screen name="EditEntries" component={EditEntries} />
+        <Stack.Screen
+          name="Add"
+          component={AddExpense}
+          options={{
+            headerStyle: {
+              backgroundColor: colors.rebecapurple,
+            },
+            headerTintColor: colors.white,
+            headerTitleStyle: {
+              fontSize: 18,
+            },
+          }}
+        />
+        <Stack.Screen
+          name="EditEntries"
+          component={EditEntries}
+          options={{
+            headerStyle: {
+              backgroundColor: colors.rebecapurple,
+            },
+            headerTintColor: colors.white,
+            headerTitleStyle: {
+              fontSize: 18,
+            },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

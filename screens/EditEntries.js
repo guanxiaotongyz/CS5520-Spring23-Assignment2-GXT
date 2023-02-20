@@ -30,9 +30,8 @@ const EditEntries = (props) => {
   };
 
   return (
-    // <View>
-    //   <Text>EditEntries Test</Text>
-
+  
+    <View style={styles.container}>
     <CardEditPage>
       {/* show the information */}
       <View style={styles.info}>
@@ -77,15 +76,14 @@ const EditEntries = (props) => {
         </PressableButton>
       </View>
     </CardEditPage>
-
-    // </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 20,
+    backgroundColor: colors.lightgreenblue,
   },
   button: {
     backgroundColor: colors.darkblue,
