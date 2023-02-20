@@ -40,8 +40,6 @@ const Home = ({ navigation }) => {
         tabBarInactiveTintColor: colors.grey,
         headerStyle: { backgroundColor: colors.lightgreenblue },
         headerTintColor: colors.darkblue,
-        
-
 
       }
       

@@ -23,7 +23,7 @@ const AddEntries = () => {
   // invaild input check
   const checkInput = () => {
     // if calories is null or empty or less than 0
-    if (calories == null || calories == "" || parseInt(calories) < 0) {
+    if (calories == null || calories == "" || parseInt(calories) < 0 || isNaN(calories)) {
       invaildAlert();
       return false;
     }
@@ -63,7 +63,7 @@ const AddEntries = () => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.caloriesInputContainer}>
         <Text style={styles.text}>Calories: </Text>
         <TextInput
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    backgroundColor: colors.rebecapurple,
+    backgroundColor: colors.lightpurple,
     padding: 10,
     height: 40,
     width: 90,
@@ -154,6 +154,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 80,
     marginRight: 80,
+  },
+  container: {
+    flex: 1,
+    backgroundColor: colors.lightgreenblue,
   },
 });
 

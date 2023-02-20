@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./screens/Home";
 import EditEntries from "./screens/EditEntries";
 import AddExpense from "./screens/AddEntries";
+import colors from "./styles /colors";
 
 
 
@@ -20,7 +21,16 @@ function App() {
           component={Home}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Add" component={AddExpense} />
+        <Stack.Screen name="Add" component={AddExpense} 
+                        options={{
+                          headerStyle: {
+                            backgroundColor: colors.rebecapurple,
+                          },
+                          headerTintColor: colors.white,
+                          headerTitleStyle: {
+                            fontSize: 18,
+                          },
+                        }} />
         <Stack.Screen name="EditEntries" component={EditEntries} />
       </Stack.Navigator>
     </NavigationContainer>
