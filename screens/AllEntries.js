@@ -28,8 +28,6 @@ const AllEntries = () => {
 
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-          <Text>All Entries information</Text>
-          <Text>Firebase crud</Text>
           <EntriesList entries={entries} />
         </View>
       );

@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Entypo } from "@expo/vector-icons";
 import EditEntries from "../screens/EditEntries";
 import PressableButton from "./PressableButton";
+import colors from "../styles /colors";
 
 export default function EntriesList({ entries }) {
   const navigation = useNavigation();
@@ -15,26 +16,32 @@ export default function EntriesList({ entries }) {
         renderItem={({ item }) => (
           // console.log("item", item),
           // console.log("item", item.isWarning),
-          
-        <PressableButton
+
+          <PressableButton
             style={styles.item}
             pressHandler={() =>
-                      navigation.navigate("EditEntries", {
-                        calories: item.calories,
-                        description: item.description,
-                        isWarning: item.isWarning,
-                        id: item.id,
-                      })
-                    }
+              navigation.navigate("EditEntries", {
+                calories: item.calories,
+                description: item.description,
+                isWarning: item.isWarning,
+                id: item.id,
+              })
+            }
           >
-            {item.isWarning == true ? (
-              <Entypo name="warning" size={24} color="black" />
-            ) : null}
-            <Text style={styles.description}>{item.description}</Text>
-            <Text style={styles.calories}>{item.calories}</Text>
+            <View style={styles.information}>
+              <Text style={styles.description}>{item.description}</Text>
+
+              <View style={styles.warmingContainer}>
+                {item.isWarning == true ? (
+                  <Entypo name="warning" size={22} color={colors.yellow} />
+                ) : null}
+
+                <View style={styles.caloriesContainer}>
+                  <Text style={styles.calories}>{item.calories}</Text>
+                </View>
+              </View>
+            </View>
           </PressableButton>
-
-
         )}
         keyExtractor={(item) => item.id}
       />
@@ -48,17 +55,42 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   item: {
-    backgroundColor: "#f9c2ff",
-    padding: 20,
+    backgroundColor: colors.darkblue,
+    padding: 5,
     marginVertical: 8,
-    marginHorizontal: 16,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    marginHorizontal: 10,
+    borderRadius: 5,
   },
   description: {
-    fontSize: 32,
+    marginTop: 5,
+    fontSize: 18,
+    color: colors.white,
+    fontWeight: "bold",
   },
   calories: {
-    fontSize: 32,
+    fontSize: 18,
+    color: colors.darkblue,
+    fontWeight: "bold",
+    alignSelf: "center",
+  },
+  caloriesContainer: {
+    marginTop: 5,
+    marginLeft: 3,
+    backgroundColor: colors.white,
+    borderRadius: 5,
+    height: 22,
+    width: 70,
+  },
+  information: {
+    marginHorizontal: 10,
+    height: 35,
+    width: 300,
+    justifyContent: "space-between",
+    flexDirection: "row",
+  },
+  warmingContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

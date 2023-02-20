@@ -31,8 +31,6 @@ const OverLimitEntrires = ({navigation}) => {
 
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-          <Text>OverLimitEntrires</Text>
-          <Text>Firebase crud</Text>
           <EntriesList entries={overLimitEntrires} />
         </View>
       );
