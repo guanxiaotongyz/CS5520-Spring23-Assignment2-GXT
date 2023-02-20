@@ -6,6 +6,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AllEntries from "./AllEntries";
 import OverLimitEntrires from "./OverLimitEntrires";
 import PressableButton from "../components/PressableButton";
+import { Feather } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import colors from "../styles /colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -22,19 +25,39 @@ const Home = ({ navigation }) => {
   );
 
   return (
-    <Tab.Navigator>
+    // add icon to the two button tab
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          if (route.name === "All Entries") {
+            return <Feather name="info" size={23} color={color} />;
+          } else if (route.name === "Over-limit Entries") {
+            return <Ionicons name="warning-outline" size={23} color={color} />
+          }
+        },
+        tabBarStyle: { backgroundColor: colors.lightgreenblue },
+        tabBarActiveTintColor: colors.darkblue,
+        tabBarInactiveTintColor: colors.grey,
+        headerStyle: { backgroundColor: colors.lightgreenblue },
+        headerTintColor: colors.darkblue,
+        
+
+
+      }
+      
+      )
+
+      
+     } 
+    >
       <Tab.Screen
+        // backgroundColor={colors.lightgreenblue}
+
         name="All Entries"
         component={AllEntries}
         options={() => {
           return {
             headerRight: () => (
-              // <Button
-              //   onPress={() => {
-              //     navigation.navigate("Add");
-              //   }}
-              //   title="+"
-              // ></Button>
               addPrssableSign
             ),
           };
@@ -46,12 +69,6 @@ const Home = ({ navigation }) => {
         options={() => {
           return {
             headerRight: () => (
-              // <Button
-              //   onPress={() => {
-              //     navigation.navigate("Add");
-              //   }}
-              //   title="+"
-              // ></Button>
               addPrssableSign
             ),
           };
@@ -62,11 +79,11 @@ const Home = ({ navigation }) => {
 };
 
 const Styles = StyleSheet.create({
-  plusSign: {
-    color: "black",
-    marginRight: 20,
-    fontSize: 100,
-    fontWeight: "300",
+  button: {
+    color: colors.darkblue,
+    fontSize: 22,
+    fontWeight: "bold",
+    marginRight: 10,
   },
 });
 

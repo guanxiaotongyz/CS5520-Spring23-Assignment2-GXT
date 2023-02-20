@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   item: {
-    backgroundColor: colors.darkblue,
+    backgroundColor: colors.rebecapurple,
     padding: 5,
     marginVertical: 8,
     marginHorizontal: 10,

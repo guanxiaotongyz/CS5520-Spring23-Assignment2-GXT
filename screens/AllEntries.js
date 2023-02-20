@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import {collection, doc,  getDocs, getDoc, onSnapshot} from 'firebase/firestore'
 import { firestore } from "../firebase/firebase-setup"
 import EntriesList from '../components/EntriesList'
+import colors from '../styles /colors'
 
 const AllEntries = () => {
     const [entries, setEntries] = React.useState([])
@@ -27,7 +28,7 @@ const AllEntries = () => {
 
 
     return (
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" , backgroundColor: colors.lightblueyellow }}>
           <EntriesList entries={entries} />
         </View>
       );
