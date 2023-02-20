@@ -13,11 +13,11 @@ const CardEditPage = (props) => {
       height: props.heightValue || 150,
       width: props.widthValue || 250,
       borderRadius: 10,
-      backgroundColor: colors.lightblue,
+      backgroundColor: colors.grey,
       shadowRadius: 10,
       shadowOpacity: 0.1,
       elevation: 10,
-      shadowColor: colors.lightblue,
+      shadowColor: colors.grey,
       shadowOffset: { width: 0, height: 0 },
 
    };
