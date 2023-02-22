@@ -1,6 +1,6 @@
 import { View, Text, Button } from 'react-native'
 import React, { useEffect } from 'react'
-import {collection, doc,  getDocs, getDoc, onSnapshot} from 'firebase/firestore'
+import {collection, doc,  getDocs, getDoc, onSnapshot, QuerySnapshot} from 'firebase/firestore'
 import { firestore } from "../firebase/firebase-setup"
 import EntriesList from '../components/EntriesList'
 import colors from '../styles /colors'
@@ -11,16 +11,20 @@ const AllEntries = () => {
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(firestore, "entries"), (docSnap) => {
              if (docSnap.empty) {
-                console.log("No matching documents.");
+                // no data 
+                console.log("No data.");
                 setEntries([]);
                 return;
             }
-            else {
-                setEntries(docSnap.docs.map((docdata) => {
-                  let data = docdata.data()
-                  data= {...data, id: docdata.id}
-                  return data
-                }))
+            else{
+                let docs = []
+                docSnap.forEach((snap) => {
+                     //console.log("ID====" , snap.id);
+                    docs.push({...snap.data(), id: snap.id})
+                }
+                )
+                // console.log("docs====", docs)
+                setEntries(docs)
             }
         })
         return unsubscribe
