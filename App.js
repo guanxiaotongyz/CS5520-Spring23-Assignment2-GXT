@@ -9,6 +9,7 @@ import colors from "./styles /colors";
 
 const Stack = createNativeStackNavigator();
 
+
 function App() {
   return (
     <NavigationContainer>
